@@ -5,6 +5,7 @@ sg.theme('Darkblack')
 if not ut.arquivoExiste(arquivo):
     ut.criaArquivo(arquivo)
 janela1, janela2 = ut.janela_login(), None
+
 while True:
     window, event, values = sg.read_all_windows()
     #leitura = str(ut.ler_arquivo(arquivo))

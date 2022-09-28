@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-# função verifica se existe o arquivo txt.
+
 def arquivoExiste(nome):
     try:
         a = open(nome, 'rt')
@@ -56,3 +56,4 @@ def janela_cadastro():
 
 def ler_arquivo(arq):
     return arq.read()
+
