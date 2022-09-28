@@ -49,8 +49,8 @@ def janela_cadastro():
                        [sg.Text('Senha:')],
                        [sg.Input(key='senha', password_char = "*")],
                        [sg.Text('Digite sua senha novamente:')],
-                       [sg.Input(key='senha2')],
-                       [sg.Text('', key='mensagem', password_char = "*")],
+                       [sg.Input(key='senha2',password_char = "*")],
+                       [sg.Text('', key='mensagem')],
                        [sg.Button('Cadastrar', size=(40, 2))]]
     return sg.Window('Cadastro', layout=layout_cadastro, finalize = True)
 

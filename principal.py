@@ -1,6 +1,7 @@
 import uteis as ut
 import PySimpleGUI as sg
 arquivo = 'Cadastros_sistema_de_login_caua'
+sg.theme('Darkblack')
 if not ut.arquivoExiste(arquivo):
     ut.criaArquivo(arquivo)
 janela1, janela2 = ut.janela_login(), None
