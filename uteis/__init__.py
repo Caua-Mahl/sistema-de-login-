@@ -38,7 +38,7 @@ def janela_login():
               [sg.Text('Usuário:')],
               [sg.Input(key='usuario')],
               [sg.Text('Senha:')],
-              [sg.Input(key='senha')],
+              [sg.Input(key='senha', password_char = "*")],
               [sg.Text('', key='mensagem')],
               [sg.Button('Cadastrar', size=(20, 2)), sg.Button('Entrar', size=(20, 2))]]
     return sg.Window('Login', layout=layout, finalize = True)
@@ -47,10 +47,10 @@ def janela_cadastro():
                        [sg.Text('Usuário:')],
                        [sg.Input(key='usuario')],
                        [sg.Text('Senha:')],
-                       [sg.Input(key='senha')],
+                       [sg.Input(key='senha', password_char = "*")],
                        [sg.Text('Digite sua senha novamente:')],
                        [sg.Input(key='senha2')],
-                       [sg.Text('', key='mensagem')],
+                       [sg.Text('', key='mensagem', password_char = "*")],
                        [sg.Button('Cadastrar', size=(40, 2))]]
     return sg.Window('Cadastro', layout=layout_cadastro, finalize = True)
 
