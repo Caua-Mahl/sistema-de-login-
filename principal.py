@@ -1,35 +1,25 @@
 import uteis as ut
 import PySimpleGUI as sg
-layout = [[sg.Text('SEJA BEM VINDO AO SISTEMA DE LOGIN DO CAUÃ')],
-          [sg.Text('Usuário')],
-          [sg.Input(key='usuario')],
-          [sg.Text('Senha')],
-          [sg.Input(key='senha')],
-          [sg.Text('',key='mensagem')],
-          [sg.Button('Cadastrar', size = (20, 2)),sg.Button('Entrar', size = (20, 2))]]
-layout_cadastro = [[sg.Text('Cadastrar nova conta')],
-          [sg.Text('Usuário')],
-          [sg.Input(key='usuario')],
-          [sg.Text('Senha')],
-          [sg.Input(key='senha')],
-          [sg.Text('Digite sua senha novamente')],
-          [sg.Input(key='senha2')],
-          [sg.Text('',key='mensagem')],
-          [sg.Button('Cadastrar', size = (40, 2))]]
-window = sg.Window('Login', layout=layout)
 arquivo = 'Cadastros_sistema_de_login_caua'
 if not ut.arquivoExiste(arquivo):
     ut.criaArquivo(arquivo)
-
+janela1, janela2 = ut.janela_login(), None
 while True:
-    event, values = window.read()
-    if event == sg.WIN_CLOSED:
+    window, event, values = sg.read_all_windows()
+    if window == janela1 and event == sg.WIN_CLOSED:
         break
-    elif event == 'Cadastrar':
-        while True:
-            window = sg.Window('Cadastro', layout=layout_cadastro)
-            event, values = window.read()
-            if event == sg.WIN_CLOSED:
-                break
-            elif event == 'Cadastrar':
-                break
+    if window == janela1 and event == 'Cadastrar':
+        janela2 = ut.janela_cadastro()
+        janela1.hide()
+    if window == janela2 and event == sg.WIN_CLOSED:
+        break
+    if window == janela2 and event == 'Voltar':
+        janela1 = ut.janela_login()
+        janela2.hide()
+    if window == janela2 and event == 'Cadastrar':
+        if values['usuario'].isalnum() and 5 <len(values['usuario'])<15:
+            sg.popup('Você se cadastrou com sucesso!', title= 'Cadastrado')
+            janela1 = ut.janela_login()
+            janela2.hide()
+        else:
+            window
