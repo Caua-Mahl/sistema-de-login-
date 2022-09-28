@@ -18,35 +18,20 @@ def criaArquivo(nome):
     except:
         print(f'erro ao criar arquivo {nome}')
 
-# função de leitura de arquivo txt .
-def lerArquivo(nome):
-    try:
-        a = open(nome, 'rt')
-    except:
-        print('erro ao ler arquivo')
-    else:
-        print(a.read())
-    finally:
-        a.close()
+# fu
 
 
 
 #função de cadastro no arquivo txt
-def cadastraArquivo(arq, nome):
+def cadastra_arquivo(arq, usuario, senha):
     try:
         a = open(arq, 'at')
     except:
-        print('erro ao cadastrar no arquivo')
+        print('erro ao cadastrar arquivo')
     else:
-        a.write(f'{nome} \n')
-        #a.write(f"{nome['nome']} {nome['idade']} {nome['id']} {nome['sexo']} {nome['peso']} {nome['altura']} {nome['idade']} {nome['plano']} {nome['imc']} {nome['bf']}")
+        a.write(f'{usuario} {senha}')
         a.close()
 
-# função valida usuario.
-def valida_usuario(nome):
-    while True:
-        v = (nome.isalnum())
-        return v
 
 def janela_login():
     layout = [[sg.Text('SEJA BEM VINDO AO SISTEMA DE LOGIN DO CAUÃ')],
@@ -68,3 +53,6 @@ def janela_cadastro():
                        [sg.Text('', key='mensagem')],
                        [sg.Button('Cadastrar', size=(40, 2))]]
     return sg.Window('Cadastro', layout=layout_cadastro, finalize = True)
+
+def ler_arquivo(arq):
+    return arq.read()
